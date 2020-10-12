@@ -1,0 +1,104 @@
+---
+name: Page headers
+route: /patterns/pageheaders
+---
+
+# Page headers
+
+<Intro>Test</Intro>
+
+## Basic
+
+Page title with actions on the right.
+
+```typescript
+import { breakpoints, layout } from '@pluralsight/ps-design-system-core'
+import Button from '@pluralsight/ps-design-system-button'
+import { PageWidthLayout } from '@pluralsight/ps-design-system-layout'
+import SearchInput from '@pluralsight/ps-design-system-searchinput'
+import { Heading } from '@pluralsight/ps-design-system-text'
+import React from 'react'
+
+const Example: React.FC = props => {
+  return (
+    <PageWidthLayout styl>
+      <header className="header">
+        <Heading className="heading" size={Heading.sizes.xLarge}>
+          <h2>Really Really Really Really Really Really Really Really Really Really Really Really Really large Heading</h2>
+        </Heading>
+
+        <nav className="nav">
+          <SearchInput className="search" placeholder="What are you looking for?" />
+          
+          <ul className="actions">
+            <li>
+              <Button appearance={Button.appearances.secondary}>Click me</Button>
+            </li>
+            <li>
+              <Button appearance={Button.appearances.secondary}>Click me</Button>
+            </li>
+            <li>
+              <Button appearance={Button.appearances.secondary}>Click me</Button>
+            </li>
+            <li>
+              <Button appearance={Button.appearances.primary}>Click me</Button>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <style jsx>{`
+        .header {
+          display: flex;
+          flex-direction: column;
+          margin-right: ${layout.spacingMedium};
+        }
+        .actions {
+          display: flex;
+          flex-direction: column;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+        .heading,
+        .search,
+        .actions li {
+          margin-bottom: ${layout.spacingXSmall};
+        }
+        .search, .actions button { width: 100%; }
+        .actions li:last-child { margin-bottom: 0; }
+
+        @media screen and (min-width: ${breakpoints.small}) {
+          .header { flex-wrap: wrap; }
+          .heading { margin-bottom: ${layout.spacingMedium}; }
+          .nav {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+          }
+          .search, .actions button { width: initial; }
+          .search, .actions li {
+            margin-bottom: 0;
+            margin-right: ${layout.spacingXSmall};
+          }
+          .actions li:last-child { margin-right: 0; }
+          .actions { flex-direction: row; }
+        }
+
+        @media screen and (min-width: ${breakpoints.large}) {
+          .header { 
+            flex-direction: row; 
+            align-items: flex-end; 
+          }
+          .heading {
+            margin-bottom: 0;
+            flex: 1;
+          }
+        }
+      `}</style>
+    </PageWidthLayout>
+  )
+}
+
+export default Example
+```
