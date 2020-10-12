@@ -381,6 +381,17 @@ const items = [
         title: 'Feature flags'
       }
     ]
+  },
+  {
+    header: {
+      title: 'Patterns'
+    },
+    items: [
+      {
+        href: '/patterns/pageheaders',
+        title: 'Page headers'
+      }
+    ]
   }
 ]
 
