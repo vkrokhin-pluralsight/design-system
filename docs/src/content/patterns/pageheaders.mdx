@@ -5,11 +5,15 @@ route: /patterns/pageheaders
 
 # Page headers
 
-<Intro>Test</Intro>
+<Intro>Patterns for commonly used page headers.</Intro>
 
-## Basic
+## Under construction
 
-Page title with actions on the right.
+<img src="https://media.giphy.com/media/OMeGDxdAsMPzW/giphy.gif" />
+
+## Basic header
+
+A basic responsive page header with actions.
 
 ```typescript
 import { breakpoints, layout } from '@pluralsight/ps-design-system-core'
@@ -21,76 +25,478 @@ import React from 'react'
 
 const Example: React.FC = props => {
   return (
-    <PageWidthLayout styl>
-      <header className="header">
+    <PageWidthLayout>
+      <header className="header" id="basicheader">
         <Heading className="heading" size={Heading.sizes.xLarge}>
-          <h2>Really Really Really Really Really Really Really Really Really Really Really Really Really large Heading</h2>
+          <h1>Heading</h1>
         </Heading>
 
         <nav className="nav">
-          <SearchInput className="search" placeholder="What are you looking for?" />
-          
           <ul className="actions">
             <li>
-              <Button appearance={Button.appearances.secondary}>Click me</Button>
+              <SearchInput className="search" placeholder="Placeholder" />
             </li>
             <li>
-              <Button appearance={Button.appearances.secondary}>Click me</Button>
+              <Button appearance={Button.appearances.secondary}>Label</Button>
             </li>
             <li>
-              <Button appearance={Button.appearances.secondary}>Click me</Button>
+              <Button appearance={Button.appearances.secondary}>Label</Button>
             </li>
             <li>
-              <Button appearance={Button.appearances.primary}>Click me</Button>
+              <Button appearance={Button.appearances.primary}>Label</Button>
             </li>
           </ul>
         </nav>
       </header>
 
       <style jsx>{`
-        .header {
+        #basicheader {
           display: flex;
           flex-direction: column;
-          margin-right: ${layout.spacingMedium};
         }
-        .actions {
+        #basicheader .actions {
           display: flex;
           flex-direction: column;
           margin: 0;
           padding: 0;
           list-style: none;
         }
-        .heading,
-        .search,
-        .actions li {
-          margin-bottom: ${layout.spacingXSmall};
+        #basicheader .heading {
+          margin-bottom: ${layout.spacingLarge};
         }
-        .search, .actions button { width: 100%; }
-        .actions li:last-child { margin-bottom: 0; }
+        #basicheader .actions li {
+          margin-bottom: ${layout.spacingXSmall};
+          margin-right: 0;
+        }
+        #basicheader .search,
+        #basicheader .actions button {
+          width: 100%;
+        }
+        #basicheader .actions li:last-child {
+          margin-bottom: 0;
+        }
 
         @media screen and (min-width: ${breakpoints.small}) {
-          .header { flex-wrap: wrap; }
-          .heading { margin-bottom: ${layout.spacingMedium}; }
-          .nav {
+          #basicheader {
+            flex-wrap: wrap;
+          }
+          #basicheader .heading {
+            margin-bottom: ${layout.spacingLarge};
+          }
+          #basicheader .actions {
+            flex-direction: row;
+          }
+          #basicheader .actions .search,
+          #basicheader .actions button {
+            width: initial;
+          }
+          #basicheader .actions li {
+            margin-bottom: 0;
+            margin-right: ${layout.spacingSmall};
+          }
+          #basicheader .actions li:last-child {
+            margin-right: 0;
+          }
+        }
+
+        @media screen and (min-width: ${breakpoints.large}) {
+          #basicheader {
+            flex-direction: row;
+            align-items: flex-end;
+          }
+          #basicheader .heading {
+            margin-bottom: 0;
+            flex: 1;
+          }
+        }
+      `}</style>
+    </PageWidthLayout>
+  )
+}
+
+export default Example
+```
+
+## Robust header
+
+A robust page header with actions.
+
+```typescript
+import { breakpoints, layout } from '@pluralsight/ps-design-system-core'
+import Badge from '@pluralsight/ps-design-system-badge'
+import Button from '@pluralsight/ps-design-system-button'
+import { PageWidthLayout } from '@pluralsight/ps-design-system-layout'
+import LinearProgress from '@pluralsight/ps-design-system-linearprogress'
+import StarRating from '@pluralsight/ps-design-system-starrating'
+import Tag from '@pluralsight/ps-design-system-tag'
+import { Heading, P } from '@pluralsight/ps-design-system-text'
+import React from 'react'
+
+const Example: React.FC = props => {
+  return (
+    <PageWidthLayout>
+      <header className="header" id="robustheader">
+        <div className="badge">
+          <Badge color={Badge.colors.gray}>Course</Badge>
+        </div>
+        <Heading className="heading" size={Heading.sizes.xLarge}>
+          <h1>Heading</h1>
+        </Heading>
+        <P>
+          I'm baby chambray cronut vegan cray banjo man bun organic biodiesel
+          readymade tumblr la croix pug blog microdosing. Cred squid man bun
+          iPhone, ethical banh mi post-ironic palo santo 90's vexillologist.
+          8-bit viral
+        </P>
+
+        <ul className="tags">
+          <li>
+            <Tag>Label</Tag>
+          </li>
+          <li>
+            <Tag>Label</Tag>
+          </li>
+          <li>
+            <Tag>Label</Tag>
+          </li>
+          <li>
+            <Tag>Label</Tag>
+          </li>
+          <li>
+            <Tag>Label</Tag>
+          </li>
+        </ul>
+
+        <ul class="metadata">
+          <li>Meta data</li>
+          <li>Meta data</li>
+          <li>Meta data</li>
+          <li>Meta data</li>
+          <li>
+            <StarRating value={3.9} />
+          </li>
+          <li>
+            50% completed <LinearProgress value={50} />
+          </li>
+        </ul>
+
+        
+          <ul className="actions">
+            <li>
+              <Button appearance={Button.appearances.primary}>Label</Button>
+            </li>
+            <li>
+              <Button appearance={Button.appearances.secondary}>Label</Button>
+            </li>
+            <li>
+              <Button appearance={Button.appearances.secondary}>Label</Button>
+            </li>
+            <li>
+              <Button appearance={Button.appearances.secondary}>Label</Button>
+            </li>
+          </ul>
+
+      </header>
+
+      <style jsx>{`
+        #robustheader .tags {
+          display: flex;
+          flex-direction: row;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+        #robustheader .tags li {
+          margin-right: ${layout.spacingXSmall};
+        }
+        #robustheader .tags tag:last-child {
+          margin-bottom: 0;
+        }
+
+        #robustheader .metadata {
+          display: flex;
+          flex-direction: row;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+        #robustheader .metadata li {
+          margin-right: ${layout.spacingXSmall};
+        }
+        #robustheader .metadata li:after {
+          content: ' • ';
+        }
+        #robustheader .metadata li:last-child:after {
+          content: '';
+        }
+
+        #robustheader .actions {
+          display: flex;
+          flex-direction: column;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+        #robustheader .heading,
+        #robustheader .search,
+        #robustheader .actions li {
+          margin-bottom: ${layout.spacingXSmall};
+        }
+        #robustheader .search,
+        #robustheader .actions button {
+          width: 100%;
+        }
+        #robustheader .actions li:last-child {
+          margin-bottom: 0;
+        }
+
+        @media screen and (min-width: ${breakpoints.small}) {
+          #robustheader {
+            flex-wrap: wrap;
+          }
+          #robustheader .heading {
+            margin-bottom: ${layout.spacingMedium};
+          }
+          #robustheader .tags {
+            margin-bottom: ${layout.spacingMedium};
+          }
+          #robustheader .actions {
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
           }
-          .search, .actions button { width: initial; }
-          .search, .actions li {
+          #robustheader .actions li {
             margin-bottom: 0;
             margin-right: ${layout.spacingXSmall};
           }
-          .actions li:last-child { margin-right: 0; }
-          .actions { flex-direction: row; }
+          #robustheader .actions li:last-child {
+            margin-right: 0;
+          }
         }
 
         @media screen and (min-width: ${breakpoints.large}) {
-          .header { 
-            flex-direction: row; 
-            align-items: flex-end; 
+          #robustheader {
+            flex-direction: row;
+            align-items: flex-end;
           }
-          .heading {
+          #robustheader .heading {
+            margin-bottom: 0;
+            flex: 1;
+          }
+        }
+      `}</style>
+    </PageWidthLayout>
+  )
+}
+
+export default Example
+```
+
+## Power header
+
+A responsive page header with actions, tabs, and a breadcrumb link.
+
+```typescript
+import { breakpoints, layout } from '@pluralsight/ps-design-system-core'
+import Badge from '@pluralsight/ps-design-system-badge'
+import Breadcrumb from '@pluralsight/ps-design-system-breadcrumb'
+import Button from '@pluralsight/ps-design-system-button'
+import { PageWidthLayout } from '@pluralsight/ps-design-system-layout'
+import Tab from '@pluralsight/ps-design-system-tab'
+import { Heading } from '@pluralsight/ps-design-system-text'
+import React from 'react'
+
+const Example: React.FC = props => {
+  return (
+    <PageWidthLayout>
+      <header className="header" id="powerheader">
+        <div>
+          <Breadcrumb>Label</Breadcrumb>
+        </div>
+        <div className="heading-actions">
+          <Heading className="heading" size={Heading.sizes.large}>
+            <h1>Heading</h1>
+          </Heading>
+
+          <ul className="actions">
+            <li>
+              <P>
+                <strong className="label">Label: Status</strong>
+                <br />
+                <span className="subLabel">Sublabel: September 20, 2018</span>
+              </P>
+            </li>
+            <li>
+              <Button appearance={Button.appearances.primary}>Label</Button>
+            </li>
+          </ul>
+        </div>
+
+        <Tab.List>
+          <Tab.ListItem id="menu1">Label</Tab.ListItem>
+          <Tab.ListItem id="menu2">Label</Tab.ListItem>
+          <Tab.ListItem id="menu3">Label</Tab.ListItem>
+          <Tab.ListItem id="menu4">Label</Tab.ListItem>
+          <Tab.ListItem id="menu5">Label</Tab.ListItem>
+        </Tab.List>
+      </header>
+
+      <style jsx>{`
+        #powerheader .heading-actions {
+          display: flex;
+          flex-direction: column;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+        #powerheader .heading {
+          margin: 0 0 ${layout.spacingMedium} 0;
+        }
+        #powerheader .actions {
+          display: flex;
+          flex-direction: column;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+
+        #powerheader .actions p {
+          line-height: var(--psTypeLineHeightTight);
+        }
+        #powerheader .actions .sublabel {
+          color: ${colorsTextIcon.lowOnLight};
+        }
+
+        #powerheader .search,
+        #powerheader .actions li {
+          margin-bottom: ${layout.spacingXSmall};
+        }
+        #powerheader .search,
+        #powerheader .actions button {
+          width: 100%;
+        }
+        #powerheader .actions li:last-child {
+          margin-bottom: 0;
+        }
+
+        @media screen and (min-width: ${breakpoints.medium}) {
+          #powerheader .heading-actions {
+            flex-direction: row;
+            align-items: center;
+          }
+          #powerheader .actions {
+            margin-bottom: 0;
+            flex: 1
+          }
+          #powerheader .actions li {
+            margin: 0;
+            text-align: right;
+          }
+          #powerheader .actions button {
+            width: initial;
+          }
+        }
+      `}</style>
+    </PageWidthLayout>
+  )
+}
+
+export default Example
+```
+
+## Section header
+
+A responsive section header with actions.
+
+```typescript
+import { breakpoints, layout } from '@pluralsight/ps-design-system-core'
+import Badge from '@pluralsight/ps-design-system-badge'
+import Breadcrumb from '@pluralsight/ps-design-system-breadcrumb'
+import Button from '@pluralsight/ps-design-system-button'
+import { PageWidthLayout } from '@pluralsight/ps-design-system-layout'
+import SearchInput from '@pluralsight/ps-design-system-searchinput'
+import { Heading } from '@pluralsight/ps-design-system-text'
+import React from 'react'
+
+const Example: React.FC = props => {
+  return (
+    <PageWidthLayout>
+      <header className="header" id="sectionheader">
+        <Heading className="heading" size={Heading.sizes.medium}>
+          <h2>Heading</h2>
+        </Heading>
+
+        <ul className="actions">
+          <li>
+            <Button appearance={Button.appearances.primary}>Label</Button>
+          </li>
+          <li>
+            <SearchInput className="search" placeholder="Placeholder" />
+          </li>
+        </ul>
+      </header>
+
+      <style jsx>{`
+        #sectionheader {
+          display: flex;
+          flex-direction: column;
+        }
+
+        #sectionheader .actions {
+          display: flex;
+          flex-direction: column;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+        #sectionheader .heading {
+          margin-top: 0;
+          margin-bottom: ${layout.spacingLarge};
+        }
+        #sectionheader .search,
+        #sectionheader .actions li {
+          margin-bottom: ${layout.spacingSmall};
+        }
+        #sectionheader .search,
+        #sectionheader .actions button {
+          width: 100%;
+        }
+        #sectionheader .actions li:last-child {
+          margin-bottom: 0;
+        }
+
+        @media screen and (min-width: ${breakpoints.small}) {
+          #sectionheader {
+            flex-wrap: wrap;
+          }
+          #sectionheader.heading {
+            margin-bottom: ${layout.spacingLarge};
+          }
+          #sectionheader .search,
+          #sectionheader .actions button {
+            width: initial;
+          }
+          #sectionheader .search {
+            margin-bottom: 0;
+          }
+          #sectionheader .actions li {
+            margin-bottom: 0;
+            margin-right: ${layout.spacingSmall};
+          }
+          #sectionheader .actions li:last-child {
+            margin-right: 0;
+          }
+          #sectionheader .actions {
+            flex-direction: row;
+          }
+        }
+
+        @media screen and (min-width: ${breakpoints.medium}) {
+          #sectionheader {
+            flex-direction: row;
+            align-items: center;
+          }
+          #sectionheader .heading {
             margin-bottom: 0;
             flex: 1;
           }
