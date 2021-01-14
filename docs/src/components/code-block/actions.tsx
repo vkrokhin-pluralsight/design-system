@@ -67,7 +67,7 @@ export const CodeSandboxAction: React.FC<CodeSandboxActionProps> = props => {
   const gitInfo = {
     account: 'pluralsight',
     repository: 'design-system',
-    branch: 'master',
+    branch: 'jake',
     host: 'github'
   }
 
