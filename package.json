@@ -10,6 +10,9 @@
     "design system",
     "pattern library"
   ],
+  "engines": {
+    "node": "^15.5.0"
+  },
   "workspaces": {
     "nohoist": [],
     "packages": [
