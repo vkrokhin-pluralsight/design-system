@@ -13,7 +13,7 @@ import {
 } from 'react'
 import {
   canUseDOM,
-  uniqueId,
+  useUniqueId,
   ValueOf,
   HTMLPropsFor
 } from '@pluralsight/ps-design-system-util'
@@ -49,6 +49,7 @@ interface UseDropdownProps extends Omit<HTMLPropsFor<'button'>, 'onChange'> {
   style?: React.CSSProperties
   subLabel?: ReactNode
   value?: number | string
+  'data-testid'?: string
 }
 
 const sortDropdownProps = ({
@@ -110,7 +111,8 @@ export const useDropdown = (
   props: UseDropdownProps,
   forwardedRef: Ref<HTMLButtonElement>
 ) => {
-  const id = uniqueId()
+  const uid = useUniqueId()
+  const id = props['data-testid'] || uid
   const buttonId = `button-${id}`
   const labelId = `label-${id}`
   const menuId = `menu-${id}`

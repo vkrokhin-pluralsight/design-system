@@ -45,6 +45,7 @@ interface DropdownProps extends Omit<HTMLPropsFor<'button'>, 'onChange'> {
   size?: ValueOf<typeof vars.sizes>
   subLabel?: ReactNode
   value?: React.ReactText
+  'data-testid'?: string
 }
 interface DropdownComponent
   extends RefForwardingComponent<
